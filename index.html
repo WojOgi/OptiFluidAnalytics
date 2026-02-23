@@ -24,18 +24,22 @@
     .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;
          border-radius:999px;border:1px solid #334155;background:#0b1328;
          color:var(--txt);transition:.2s}
-    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#0b1020;border:none}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#0b1020;border:none;font-weight:600;}
     .hero{padding:70px 24px 36px;text-align:center}
     h1{font-size:clamp(28px,5vw,46px);line-height:1.1}
-    h2{font-size:clamp(22px,3.5vw,34px);margin-bottom:10px;text-align:center}
-    p{margin:0 0 12px;color:var(--muted)}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid #172033;border-radius:16px;padding:18px}
-    footer{border-top:1px solid #172033;padding:20px;text-align:center;color:var(--muted)}
-    form input,form textarea,form select{width:100%;padding:8px;border-radius:6px;
-      border:1px solid #334155;background:#0b1328;color:var(--txt);margin-top:4px}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px}
+    h2{font-size:clamp(22px,3.5vw,34px);margin-bottom:20px;text-align:center}
+    p{margin:0 0 12px;color:var(--muted);line-height:1.6;}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .card{background:var(--card);border:1px solid #172033;border-radius:16px;padding:24px;transition:transform 0.2s;}
+    .card:hover{transform:translateY(-3px);border-color:#334155;}
+    .card h3{color:var(--brand);margin-bottom:12px;font-size:1.25rem;}
+    footer{border-top:1px solid #172033;padding:20px;text-align:center;color:var(--muted);margin-top:40px;}
+    form input,form textarea,form select{width:100%;padding:10px;border-radius:6px;
+      border:1px solid #334155;background:#0b1328;color:var(--txt);margin-top:6px;margin-bottom:12px;}
+    form input:focus,form textarea:focus,form select:focus{outline:none;border-color:var(--brand2);}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .roadmap-badge{display:inline-block;background:#334155;color:#e2e8f0;font-size:0.75rem;padding:2px 8px;border-radius:12px;vertical-align:middle;margin-left:8px;}
     @media(max-width:700px){.grid-2{grid-template-columns:1fr}}
   </style>
 </head>
@@ -57,7 +61,8 @@
   <main>
     <section class="hero container">
       <h1>Shedding light on <span style="background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;color:transparent;">materials in fluids</span></h1>
-      <p>Non-destructive, in-situ spectroscopic ellipsometry for thin films interacting with liquids, vapors, and high-pressure gases.</p>
+      <p style="max-width:700px;margin:16px auto;">Non-destructive, in-situ spectroscopic ellipsometry for thin films interacting with liquids, vapors, and high-pressure gases. We replace post-mortem guesswork with real-time predictive analytics.</p>
+      
       <div class="cta">
         <a class="btn primary" href="#contact">Start a project</a>
         <a class="btn" href="#services">Explore services</a>
@@ -65,55 +70,69 @@
     </section>
 
     <section id="services" class="container">
-      <h2>Services</h2>
+      <h2>Analytical Capabilities</h2>
       <div class="cards">
-        <div class="card"><h3>Thickness & n,k</h3><p>Precise optical modeling using Cauchy, Tauc-Lorentz, or B-splines.</p></div>
-        <div class="card"><h3>In-situ swelling & plasticization</h3><p>Real-time monitoring in liquids, vapors, or gases.</p></div>
-        <div class="card"><h3>Thermal & degradation studies</h3><p>−80 °C … 600 °C environments with controlled atmosphere.</p></div>
-        <div class="card"><h3>Adsorption & interfacial kinetics</h3><p>Quantify fouling or molecular layer growth at interfaces.</p></div>
+        <div class="card">
+          <h3>Thermal Dynamics & Atmosphere</h3>
+          <p>Precise characterization over an extreme temperature range (<strong>-50 °C to 560 °C</strong>) under controlled atmospheres including vacuum, dry N₂ flow, or experimental air. Perfect for detecting thermal degradation onset and kinetics, glass transition temperatures (Tg), residual mass, solid-state reactions, phase transitions, and dewetting.</p>
+        </div>
+        <div class="card">
+          <h3>Fluid & Vapor Interactions</h3>
+          <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including binary mixtures. Ideal for tracking swelling kinetics, competitive sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
+        </div>
+        <div class="card">
+          <h3>Thickness & Optical Constants</h3>
+          <p>Determine absolute film thickness (sub-nanometer to microns) and optical constants (n, k) across a wide spectral range. We utilize advanced optical modeling techniques (Cauchy, Tauc-Lorentz, B-splines) for complex multi-layer stacks, porous architectures, and composite materials.</p>
+        </div>
+        <div class="card" style="border-style:dashed;">
+          <h3>High-Pressure Gas <span class="roadmap-badge">Roadmap</span></h3>
+          <p><em>Upcoming capability:</em> We are actively developing setups for in-situ ellipsometry under high-pressure gas streams (e.g., CO₂, CH₄, N₂, H₂ up to 50 bar). This will enable direct observation of penetrant-induced plasticization, extreme gas uptake, and high-pressure swelling isotherms for the energy sector.</p>
+        </div>
       </div>
     </section>
 
     <section id="about" class="container">
-      <h2>About</h2>
-      <div class="card">
-        <h3>Dr. Wojciech Ogieglo</h3>
-        <p>Research Scientist (KAUST). 15+ years in polymer thin films and ellipsometry. 60+ publications, h-index ≈ 31, 80+ collaborators worldwide.</p>
-        <p>Email: <a href="mailto:w.ogieglo@kaust.edu.sa">w.ogieglo@kaust.edu.sa</a></p>
-        <p><a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank">Google Scholar ↗</a></p>
+      <h2>About the Expertise</h2>
+      <div class="card" style="max-width:800px;margin:auto;">
+        <h3 style="color:var(--txt);">Dr. Wojciech Ogieglo</h3>
+        <p>Research Scientist. Over a decade of specialized experience in polymer thin films, membrane science, and in-situ ellipsometry.</p>
+        <p>Our infrastructure allows us to look beyond standard ambient measurements, offering customized environmental cells to simulate real-world industrial stresses. Operating in full compliance with institutional technology transfer frameworks.</p>
+        <div style="margin-top:16px;">
+          <a href="mailto:w.ogieglo@gmail.com" style="color:var(--brand);text-decoration:underline;">w.ogieglo@gmail.com</a> • 
+          <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" style="color:var(--brand2);text-decoration:underline;">Google Scholar ↗</a>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="container">
       <h2>Request an analysis</h2>
-      <p style="text-align:center;">Tell us about your film, environment (fluid, T, p), and what you’d like to learn.</p>
-      <form action="https://formspree.io/f/mzzkvgnv" method="POST" class="card">
+      <p style="text-align:center;max-width:600px;margin:0 auto 24px;">Tell us about your film, environment (fluid, T, p), and what you’d like to learn. We will get back to you to discuss feasibility, setup design, and timelines.</p>
+      
+      <form action="https://formspree.io/f/mzzkvgnv" method="POST" class="card" style="max-width:700px;margin:auto;">
         <div class="grid-2">
           <label>Name<br><input type="text" name="name" required></label>
           <label>Email<br><input type="email" name="email" required></label>
         </div>
         <div class="grid-2">
-          <label>Organization<br><input type="text" name="organization"></label>
-          <label>Use case<br>
+          <label>Organization / Company<br><input type="text" name="organization"></label>
+          <label>Primary Interest<br>
             <select name="usecase">
-              <option>Thickness & n,k</option>
-              <option>Swelling / plasticization</option>
-              <option>Degradation / phase transition</option>
-              <option>Surface adsorption</option>
-              <option>Uniformity mapping</option>
-              <option>Consulting</option>
+              <option>Thermal Dynamics (-50 to 560 °C)</option>
+              <option>Liquid / Mixed Vapor Swelling</option>
+              <option>Thickness & n,k Modeling</option>
+              <option>Future High-Pressure Capabilities</option>
+              <option>General Consulting</option>
             </select>
           </label>
         </div>
-        <label>Message<br>
-          <textarea name="message" rows="5" placeholder="Briefly describe your sample and objectives."></textarea>
+        <label>Experiment & Sample Details<br>
+          <textarea name="message" rows="5" placeholder="Briefly describe your sample (e.g., polymer coating, RO membrane) and the specific environmental conditions you need tested." required></textarea>
         </label>
         <input type="hidden" name="_subject" value="OptiFluid Analytics form submission">
-        <div class="cta">
-          <button class="btn primary" type="submit">Send →</button>
+        <div class="cta" style="justify-content:flex-start;">
+          <button class="btn primary" type="submit">Send Request →</button>
         </div>
       </form>
-      <p style="text-align:center;margin-top:10px;color:var(--muted);">Your information is sent directly to Dr. Ogieglo’s KAUST email.</p>
     </section>
   </main>
 
