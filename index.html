@@ -105,7 +105,10 @@
     .hover-reveal .image-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover; 
+      /* CHANGED from cover to contain, and added padding */
+      object-fit: contain; 
+      padding: 24px;
+      box-sizing: border-box;
       display: block;
     }
 
@@ -130,7 +133,7 @@
     }
     /* When hovering anywhere on the Contact card, expand the hidden div */
     #contact .card:hover .value-props {
-      max-height: 800px; /* Arbitrary large number to allow content to naturally fit */
+      max-height: 800px; 
       opacity: 1;
       margin-top: 32px;
       padding-top: 32px;
