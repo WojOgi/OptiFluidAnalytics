@@ -67,7 +67,7 @@
     }
     .about-image {
       width: 100%;
-      max-width: 280px; 
+      max-width: 560px; /* Doubled from 280px */
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid #334155;
@@ -149,13 +149,10 @@
 
     <section id="about" class="container">
       <h2>About the Expertise</h2>
-      <div class="card" style="max-width:900px;margin:auto;">
-        
-        <div class="about-content">
+      <div class="card" style="max-width:1050px;margin:auto;"> <div class="about-content">
           <img src="./Picture1.jpg" alt="Dr. Wojciech Ogieglo / Lab Setup" class="about-image" />
           
-          <div>
-            <h3 style="color:var(--txt);">Dr. Wojciech Ogieglo</h3>
+          <div style="flex: 1;"> <h3 style="color:var(--txt);">Dr. Wojciech Ogieglo</h3>
             <p>Research Scientist. Over a decade of specialized experience in polymer thin films, membrane science, and in-situ ellipsometry.</p>
             <p style="margin-top:12px;">Our infrastructure allows us to look beyond standard ambient measurements, offering customized environmental cells to simulate real-world industrial stresses. Operating in full compliance with institutional technology transfer frameworks.</p>
             <div style="margin-top:20px;">
