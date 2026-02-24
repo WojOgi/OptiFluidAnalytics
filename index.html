@@ -44,6 +44,27 @@
     h2 { font-size: clamp(22px, 3.5vw, 34px); margin-bottom: 24px; text-align: center }
     p { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
     
+    /* --- KAUST BADGE CSS --- */
+    .kaust-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #334155;
+      padding: 8px 20px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+      color: var(--e2e8f0);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .kaust-badge img {
+      height: 26px; /* Keeps the logo proportional and neat inside the pill */
+      width: auto;
+      border-radius: 2px;
+    }
+
     .cards { 
       display: grid; 
       grid-template-columns: repeat(2, 1fr); 
@@ -59,19 +80,31 @@
     .card h3 { color: var(--brand); margin-bottom: 16px; font-size: 1.35rem; }
     .card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 0; }
     
-    /* --- ABOUT SECTION IMAGE CSS --- */
+    /* --- ABOUT SECTION IMAGE & CAPTION CSS --- */
     .about-content {
       display: flex;
       align-items: center;
       gap: 32px;
     }
+    .about-image-wrapper {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+    }
     .about-image {
       width: 100%;
-      max-width: 560px; /* Doubled from 280px */
       border-radius: 12px;
       object-fit: cover;
       border: 1px solid #334155;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .image-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.4;
+      text-align: center;
     }
     
     footer { border-top: 1px solid #172033; padding: 20px; text-align: center; color: var(--muted); margin-top: 40px; }
@@ -96,6 +129,7 @@
       .grid-2 { grid-template-columns: 1fr; }
       .card { padding: 24px; }
       .about-content { flex-direction: column; text-align: center; }
+      .kaust-badge { flex-direction: column; gap: 8px; text-align: center; border-radius: 16px; padding: 12px; }
     }
   </style>
 </head>
@@ -116,6 +150,12 @@
 
   <main>
     <section class="hero container">
+      
+      <div class="kaust-badge">
+        <img src="./kaustlogo.jpg" alt="KAUST Logo" />
+        <span>With support from King Abdullah University of Science and Technology</span>
+      </div>
+
       <h1>Shedding light on <span style="background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;color:transparent;">materials in fluids</span></h1>
       <p style="max-width:700px;margin:16px auto;">Non-destructive, in-situ spectroscopic ellipsometry for thin films interacting with liquids, vapors, and high-pressure gases. We replace post-mortem guesswork with real-time predictive analytics.</p>
       
@@ -149,16 +189,35 @@
 
     <section id="about" class="container">
       <h2>About the Expertise</h2>
-      <div class="card" style="max-width:1050px;margin:auto;"> <div class="about-content">
-          <img src="./Picture1.jpg" alt="Dr. Wojciech Ogieglo / Lab Setup" class="about-image" />
+      <div class="card" style="max-width:1050px;margin:auto;">
+        
+        <div class="about-content">
+          <div class="about-image-wrapper">
+            <img src="./Picture1.jpg" alt="Dr. Wojciech Ogieglo / Lab Setup" class="about-image" />
+            <div class="image-caption">
+              Source: W. Ogieglo, I. Pinnau, M. Wessling, In-situ non-invasive imaging of liquid-immersed thin film composite membranes, J. Membr. Sci. 546 (2018) 206–214.
+            </div>
+          </div>
           
-          <div style="flex: 1;"> <h3 style="color:var(--txt);">Dr. Wojciech Ogieglo</h3>
+          <div style="flex: 1;"> 
+            <h3 style="color:var(--txt);">Dr. Wojciech Ogieglo</h3>
             <p>Research Scientist. Over a decade of specialized experience in polymer thin films, membrane science, and in-situ ellipsometry.</p>
             <p style="margin-top:12px;">Our infrastructure allows us to look beyond standard ambient measurements, offering customized environmental cells to simulate real-world industrial stresses. Operating in full compliance with institutional technology transfer frameworks.</p>
-            <div style="margin-top:20px;">
-              <a href="mailto:w.ogieglo@gmail.com" style="color:var(--brand);text-decoration:underline;">w.ogieglo@gmail.com</a> • 
-              <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" style="color:var(--brand2);text-decoration:underline;">Google Scholar ↗</a>
+            
+            <div style="margin-top:24px; display:flex; flex-direction:column; gap:8px;">
+              <div>
+                <strong style="color:var(--muted);">KAUST Email:</strong> 
+                <a href="mailto:wojciech.ogieglo@kaust.edu.sa" style="color:var(--brand);text-decoration:underline;">wojciech.ogieglo@kaust.edu.sa</a>
+              </div>
+              <div>
+                <strong style="color:var(--muted);">Personal Email:</strong> 
+                <a href="mailto:w.ogieglo@gmail.com" style="color:var(--brand);text-decoration:underline;">w.ogieglo@gmail.com</a>
+              </div>
+              <div style="margin-top: 4px;">
+                <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">Google Scholar Profile ↗</a>
+              </div>
             </div>
+
           </div>
         </div>
 
