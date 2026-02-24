@@ -60,7 +60,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .kaust-badge img {
-      height: 80px; /* Adjust logo size here */
+      height: 80px; 
       width: auto;
       border-radius: 2px;
     }
@@ -95,11 +95,10 @@
     .about-image {
       width: 100%;
       border-radius: 12px;
-      /* CHANGED FROM 'cover' TO 'contain' FOR LEGIBILITY */
       object-fit: contain; 
       border: 1px solid #334155;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      background: #0b1328; /* Adds a dark background in case the image doesn't fill the frame perfectly */
+      background: #0b1328; 
     }
     .image-caption {
       font-size: 0.85rem;
@@ -251,6 +250,9 @@
           <textarea name="message" rows="5" placeholder="Briefly describe your sample (e.g., polymer coating, RO membrane) and the specific environmental conditions you need tested." required></textarea>
         </label>
         <input type="hidden" name="_subject" value="OptiFluid Analytics form submission">
+        
+        <input type="text" name="_gotcha" style="display:none" />
+
         <div class="cta" style="justify-content:flex-start;">
           <button class="btn primary" type="submit">Send Request →</button>
         </div>
