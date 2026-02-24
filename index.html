@@ -122,12 +122,11 @@
     .ref-list {
       list-style-type: none;
       padding-left: 0;
-      max-height: 400px; /* Limits the height so it doesn't stretch the page */
-      overflow-y: auto;  /* Adds vertical scroll */
-      padding-right: 16px; /* Prevents text from hitting the scrollbar */
+      max-height: 400px; 
+      overflow-y: auto;  
+      padding-right: 16px; 
     }
     
-    /* Custom Scrollbar Styling */
     .ref-list::-webkit-scrollbar { width: 6px; }
     .ref-list::-webkit-scrollbar-track { background: #0f172a; border-radius: 4px; }
     .ref-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -313,7 +312,6 @@
               <option>Liquid / Mixed Vapor Swelling</option>
               <option>Thickness & n,k Modeling</option>
               <option>Future High-Pressure Capabilities</option>
-              
             </select>
           </label>
         </div>
@@ -390,7 +388,14 @@
   </footer>
 
   <script>
-    document.getElementById('yr').textContent=new Date().getFullYear();
+    // Force scroll to top on page refresh/load
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Update footer year dynamically
+    document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
