@@ -66,41 +66,51 @@
       gap: 32px; 
     }
     
-    /* --- REFACTORED CARD CSS FOR HOVER IMAGE FX --- */
+    /* --- CARD CSS --- */
     .card { 
       background: var(--card); border: 1px solid #172033; 
       border-radius: 16px; 
       transition: transform 0.2s, border-color 0.2s; 
-      display: flex;
-      flex-direction: row;
-      overflow: hidden; /* Keeps the sliding image contained inside the rounded borders */
-    }
-    .card-content {
-      padding: 36px;
-      flex: 1;
+      overflow: hidden; 
+      position: relative; /* Needed for absolute positioning of the hover image */
     }
     .card:hover { transform: translateY(-3px); border-color: #334155; }
+
+    .card-content {
+      padding: 36px;
+      transition: opacity 0.3s ease; /* Fade out the text */
+    }
+    
     .card h3 { color: var(--brand); margin-bottom: 16px; font-size: 1.35rem; }
     .card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 0; }
     
-    /* Reveal Image Animation CSS */
+    /* --- REPLACEMENT IMAGE HOVER EFFECT --- */
+    /* The image wrapper sits on top of the card content, initially hidden */
     .hover-reveal .image-wrapper {
-      width: 0;
-      flex-shrink: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0;
-      background: var(--bg);
-      transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+      background: var(--card); /* Ensures no text bleeds through during transition */
+    }
+    
+    /* On hover, fade out text and fade in image */
+    .hover-reveal:hover .card-content {
+      opacity: 0;
     }
     .hover-reveal:hover .image-wrapper {
-      width: 160px; /* How wide the image opens to */
       opacity: 1;
     }
+
     .hover-reveal .image-wrapper img {
-      width: 160px;
+      width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* Ensures the image fills the card dimension completely */
       display: block;
-      border-right: 1px solid #172033;
     }
 
     /* --- ABOUT SECTION IMAGE & CAPTION CSS --- */
@@ -134,18 +144,9 @@
       .grid-2 { grid-template-columns: 1fr; }
       
       /* Mobile layout adjustments */
-      .card { flex-direction: column; }
       .card-content { padding: 24px; }
       .about-content { flex-direction: column; text-align: center; }
       .kaust-badge { flex-direction: column; gap: 8px; text-align: center; border-radius: 16px; padding: 12px; }
-      
-      /* Sliding image on mobile drops from top instead of left */
-      .hover-reveal .image-wrapper {
-        width: 100%; height: 0;
-        transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
-      }
-      .hover-reveal:hover .image-wrapper { width: 100%; height: 160px; }
-      .hover-reveal .image-wrapper img { width: 100%; height: 160px; border-right: none; border-bottom: 1px solid #172033; }
     }
   </style>
 </head>
@@ -186,12 +187,12 @@
       <div class="cards">
         
         <div class="card hover-reveal">
-          <div class="image-wrapper">
-            <img src="./image1.jpg" alt="Thermal Dynamics Setup" />
-          </div>
           <div class="card-content">
             <h3>Thermal Dynamics & Atmosphere</h3>
             <p>Precise characterization over an extreme temperature range (<strong>-50 °C to 560 °C</strong>) under controlled atmospheres including vacuum, dry N₂ flow, or experimental air. Perfect for detecting thermal degradation onset and kinetics, glass transition temperatures (Tg), residual mass, solid-state reactions, phase transitions, and dewetting.</p>
+          </div>
+          <div class="image-wrapper">
+            <img src="./image1.jpg" alt="Thermal Dynamics Setup" />
           </div>
         </div>
 
