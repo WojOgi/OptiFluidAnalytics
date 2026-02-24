@@ -96,6 +96,7 @@
       z-index: 2;
       transition: opacity 0.3s ease;
       background: var(--card); /* Ensures no text bleeds through during transition */
+      pointer-events: none; /* Allows clicks to pass through to the card if needed, though not strictly necessary here */
     }
     
     /* On hover, fade out text and fade in image */
@@ -196,24 +197,33 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card hover-reveal">
           <div class="card-content">
             <h3>Fluid & Vapor Interactions</h3>
             <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including binary mixtures. Ideal for tracking swelling magnitude and kinetics, sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
           </div>
+          <div class="image-wrapper">
+            <img src="./image2.jpg" alt="Fluid Interactions Setup" />
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card hover-reveal">
           <div class="card-content">
             <h3>Thickness & Optical Constants</h3>
             <p>Determine absolute film thickness (sub-nanometer to microns) and optical constants (n, k) across a wide spectral range and on various substrates. We utilize advanced optical modeling techniques for complex multi-layer dielectric and absorbing film stacks, porous architectures, and composite materials.</p>
           </div>
+          <div class="image-wrapper">
+            <img src="./image3.jpg" alt="Optical Modeling Data Example" />
+          </div>
         </div>
 
-        <div class="card" style="border-style:dashed;">
+        <div class="card hover-reveal" style="border-style:dashed;">
           <div class="card-content">
             <h3>High-Pressure Gas <span class="roadmap-badge">Roadmap</span></h3>
             <p><em>Upcoming capability:</em> We are actively developing setups for in-situ ellipsometry under high-pressure gas streams (e.g., CO₂, CH₄, N₂, H₂ up to 50 bar). This will enable direct observation of penetrant-induced plasticization, extreme gas uptake, and high-pressure swelling isotherms for the energy sector.</p>
+          </div>
+          <div class="image-wrapper">
+            <img src="./image4.jpg" alt="High Pressure Roadmap Concept" />
           </div>
         </div>
 
