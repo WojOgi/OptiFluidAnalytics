@@ -44,6 +44,7 @@
     h2 { font-size: clamp(22px, 3.5vw, 34px); margin-bottom: 24px; text-align: center }
     p { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
     
+    /* --- KAUST BADGE CSS --- */
     .kaust-badge {
       display: inline-flex;
       align-items: center;
@@ -72,20 +73,19 @@
       border-radius: 16px; 
       transition: transform 0.2s, border-color 0.2s; 
       overflow: hidden; 
-      position: relative; /* Needed for absolute positioning of the hover image */
+      position: relative; 
     }
     .card:hover { transform: translateY(-3px); border-color: #334155; }
 
     .card-content {
       padding: 36px;
-      transition: opacity 0.3s ease; /* Fade out the text */
+      transition: opacity 0.3s ease; 
     }
     
     .card h3 { color: var(--brand); margin-bottom: 16px; font-size: 1.35rem; }
     .card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 0; }
     
     /* --- REPLACEMENT IMAGE HOVER EFFECT --- */
-    /* The image wrapper sits on top of the card content, initially hidden */
     .hover-reveal .image-wrapper {
       position: absolute;
       top: 0;
@@ -95,22 +95,17 @@
       opacity: 0;
       z-index: 2;
       transition: opacity 0.3s ease;
-      background: var(--card); /* Ensures no text bleeds through during transition */
-      pointer-events: none; /* Allows clicks to pass through to the card if needed, though not strictly necessary here */
+      background: var(--card); 
+      pointer-events: none; 
     }
     
-    /* On hover, fade out text and fade in image */
-    .hover-reveal:hover .card-content {
-      opacity: 0;
-    }
-    .hover-reveal:hover .image-wrapper {
-      opacity: 1;
-    }
+    .hover-reveal:hover .card-content { opacity: 0; }
+    .hover-reveal:hover .image-wrapper { opacity: 1; }
 
     .hover-reveal .image-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ensures the image fills the card dimension completely */
+      object-fit: cover; 
       display: block;
     }
 
@@ -122,6 +117,25 @@
       border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.3); background: #0b1328; 
     }
     .image-caption { font-size: 0.85rem; color: var(--muted); margin-top: 10px; line-height: 1.4; text-align: center; }
+    
+    /* --- REFERENCES SECTION CSS --- */
+    .ref-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .ref-list li {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #1f2937;
+      line-height: 1.6;
+      color: var(--txt);
+    }
+    .ref-list li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .ref-list em { color: var(--muted); }
     
     footer { border-top: 1px solid #172033; padding: 20px; text-align: center; color: var(--muted); margin-top: 40px; }
     
@@ -144,7 +158,6 @@
       .cards { grid-template-columns: 1fr; } 
       .grid-2 { grid-template-columns: 1fr; }
       
-      /* Mobile layout adjustments */
       .card-content { padding: 24px; }
       .about-content { flex-direction: column; text-align: center; }
       .kaust-badge { flex-direction: column; gap: 8px; text-align: center; border-radius: 16px; padding: 12px; }
@@ -160,6 +173,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </nav>
       <a href="#contact" class="btn primary">Request analysis</a>
@@ -303,6 +317,24 @@
         </div>
       </form>
     </section>
+
+    <section id="references" class="container">
+      <h2>Selected Literature References</h2>
+      <div class="card" style="max-width:1050px;margin:auto;">
+        <ul class="ref-list">
+          <li><strong>Author, A. B.</strong>, & Colleague, C. D. (2026). Example publication title showcasing in-situ ellipsometry capabilities. <em>Journal of Membrane Science</em>, 123, 456-467. <a href="#" style="color:var(--brand);">[Link]</a></li>
+          
+          <li><strong>Author, A. B.</strong> (2025). Another placeholder for a peer-reviewed article on polymer swelling kinetics in aggressive solvents. <em>Macromolecules</em>, 58(4), 1122-1130. <a href="#" style="color:var(--brand);">[Link]</a></li>
+          
+          <li>Researcher, E. F., & <strong>Author, A. B.</strong> (2024). Thermal degradation pathways observed via real-time spectroscopic monitoring. <em>Polymer Degradation and Stability</em>, 200, 109876. <a href="#" style="color:var(--brand);">[Link]</a></li>
+          
+          <li>Scientist, G. H., et al. (2023). Competitive mixed vapor sorption isotherms in thin glassy polymer films. <em>Physical Chemistry Chemical Physics</em>, 25, 3344-3355. <a href="#" style="color:var(--brand);">[Link]</a></li>
+          
+          <li>Academic, I. J., & Expert, K. L. (2022). High-pressure gas plasticization and dilation monitored in real-time. <em>Advanced Materials Interfaces</em>, 9(12), 2200111. <a href="#" style="color:var(--brand);">[Link]</a></li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer>
