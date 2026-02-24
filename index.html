@@ -44,7 +44,6 @@
     h2 { font-size: clamp(22px, 3.5vw, 34px); margin-bottom: 24px; text-align: center }
     p { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
     
-    /* --- KAUST BADGE CSS --- */
     .kaust-badge {
       display: inline-flex;
       align-items: center;
@@ -59,11 +58,7 @@
       color: var(--e2e8f0);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .kaust-badge img {
-      height: 80px; 
-      width: auto;
-      border-radius: 2px;
-    }
+    .kaust-badge img { height: 80px; width: auto; border-radius: 2px; }
 
     .cards { 
       display: grid; 
@@ -71,42 +66,51 @@
       gap: 32px; 
     }
     
+    /* --- REFACTORED CARD CSS FOR HOVER IMAGE FX --- */
     .card { 
       background: var(--card); border: 1px solid #172033; 
-      border-radius: 16px; padding: 36px; 
-      transition: transform 0.2s; 
+      border-radius: 16px; 
+      transition: transform 0.2s, border-color 0.2s; 
+      display: flex;
+      flex-direction: row;
+      overflow: hidden; /* Keeps the sliding image contained inside the rounded borders */
+    }
+    .card-content {
+      padding: 36px;
+      flex: 1;
     }
     .card:hover { transform: translateY(-3px); border-color: #334155; }
     .card h3 { color: var(--brand); margin-bottom: 16px; font-size: 1.35rem; }
     .card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 0; }
     
+    /* Reveal Image Animation CSS */
+    .hover-reveal .image-wrapper {
+      width: 0;
+      flex-shrink: 0;
+      opacity: 0;
+      background: var(--bg);
+      transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+    }
+    .hover-reveal:hover .image-wrapper {
+      width: 160px; /* How wide the image opens to */
+      opacity: 1;
+    }
+    .hover-reveal .image-wrapper img {
+      width: 160px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-right: 1px solid #172033;
+    }
+
     /* --- ABOUT SECTION IMAGE & CAPTION CSS --- */
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .about-image-wrapper {
-      width: 100%;
-      max-width: 560px;
-      display: flex;
-      flex-direction: column;
-    }
+    .about-content { display: flex; align-items: center; gap: 32px; }
+    .about-image-wrapper { width: 100%; max-width: 560px; display: flex; flex-direction: column; }
     .about-image {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: contain; 
-      border: 1px solid #334155;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      background: #0b1328; 
+      width: 100%; border-radius: 12px; object-fit: contain; 
+      border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.3); background: #0b1328; 
     }
-    .image-caption {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 10px;
-      line-height: 1.4;
-      text-align: center;
-    }
+    .image-caption { font-size: 0.85rem; color: var(--muted); margin-top: 10px; line-height: 1.4; text-align: center; }
     
     footer { border-top: 1px solid #172033; padding: 20px; text-align: center; color: var(--muted); margin-top: 40px; }
     
@@ -128,9 +132,20 @@
     @media(max-width: 768px) {
       .cards { grid-template-columns: 1fr; } 
       .grid-2 { grid-template-columns: 1fr; }
-      .card { padding: 24px; }
+      
+      /* Mobile layout adjustments */
+      .card { flex-direction: column; }
+      .card-content { padding: 24px; }
       .about-content { flex-direction: column; text-align: center; }
       .kaust-badge { flex-direction: column; gap: 8px; text-align: center; border-radius: 16px; padding: 12px; }
+      
+      /* Sliding image on mobile drops from top instead of left */
+      .hover-reveal .image-wrapper {
+        width: 100%; height: 0;
+        transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+      }
+      .hover-reveal:hover .image-wrapper { width: 100%; height: 160px; }
+      .hover-reveal .image-wrapper img { width: 100%; height: 160px; border-right: none; border-bottom: 1px solid #172033; }
     }
   </style>
 </head>
@@ -169,22 +184,38 @@
     <section id="services" class="container">
       <h2>Analytical Capabilities</h2>
       <div class="cards">
-        <div class="card">
-          <h3>Thermal Dynamics & Atmosphere</h3>
-          <p>Precise characterization over an extreme temperature range (<strong>-50 °C to 560 °C</strong>) under controlled atmospheres including vacuum, dry N₂ flow, or experimental air. Perfect for detecting thermal degradation onset and kinetics, glass transition temperatures (Tg), residual mass, solid-state reactions, phase transitions, and dewetting.</p>
+        
+        <div class="card hover-reveal">
+          <div class="image-wrapper">
+            <img src="./image1.jpg" alt="Thermal Dynamics Setup" />
+          </div>
+          <div class="card-content">
+            <h3>Thermal Dynamics & Atmosphere</h3>
+            <p>Precise characterization over an extreme temperature range (<strong>-50 °C to 560 °C</strong>) under controlled atmospheres including vacuum, dry N₂ flow, or experimental air. Perfect for detecting thermal degradation onset and kinetics, glass transition temperatures (Tg), residual mass, solid-state reactions, phase transitions, and dewetting.</p>
+          </div>
         </div>
+
         <div class="card">
-          <h3>Fluid & Vapor Interactions</h3>
-          <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including binary mixtures. Ideal for tracking swelling magnitude and kinetics, sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
+          <div class="card-content">
+            <h3>Fluid & Vapor Interactions</h3>
+            <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including binary mixtures. Ideal for tracking swelling magnitude and kinetics, sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
+          </div>
         </div>
+
         <div class="card">
-          <h3>Thickness & Optical Constants</h3>
-          <p>Determine absolute film thickness (sub-nanometer to microns) and optical constants (n, k) across a wide spectral range and on various substrates. We utilize advanced optical modeling techniques for complex multi-layer dielectric and absorbing film stacks, porous architectures, and composite materials.</p>
+          <div class="card-content">
+            <h3>Thickness & Optical Constants</h3>
+            <p>Determine absolute film thickness (sub-nanometer to microns) and optical constants (n, k) across a wide spectral range and on various substrates. We utilize advanced optical modeling techniques for complex multi-layer dielectric and absorbing film stacks, porous architectures, and composite materials.</p>
+          </div>
         </div>
+
         <div class="card" style="border-style:dashed;">
-          <h3>High-Pressure Gas <span class="roadmap-badge">Roadmap</span></h3>
-          <p><em>Upcoming capability:</em> We are actively developing setups for in-situ ellipsometry under high-pressure gas streams (e.g., CO₂, CH₄, N₂, H₂ up to 50 bar). This will enable direct observation of penetrant-induced plasticization, extreme gas uptake, and high-pressure swelling isotherms for the energy sector.</p>
+          <div class="card-content">
+            <h3>High-Pressure Gas <span class="roadmap-badge">Roadmap</span></h3>
+            <p><em>Upcoming capability:</em> We are actively developing setups for in-situ ellipsometry under high-pressure gas streams (e.g., CO₂, CH₄, N₂, H₂ up to 50 bar). This will enable direct observation of penetrant-induced plasticization, extreme gas uptake, and high-pressure swelling isotherms for the energy sector.</p>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -216,6 +247,9 @@
               </div>
               <div style="margin-top: 4px;">
                 <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">Google Scholar Profile ↗</a>
+              </div>
+              <div style="margin-top: 4px;">
+                <a href="http://dx.doi.org/10.3990/1.9789036536318" target="_blank" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">PhD Thesis: In-situ spectroscopic ellipsometry for studies of thin films and membranes ↗</a>
               </div>
             </div>
 
