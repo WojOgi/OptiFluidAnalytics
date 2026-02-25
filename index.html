@@ -4,34 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OptiFluid Analytics — In-situ Ellipsometry in Fluids</title>
-  <meta name="description" content="OptiFluid Analytics provides non-invasive, in-situ spectroscopic ellipsometry of thin films in liquids, vapors, and high-pressure gases. Precise data on thickness, refractive index, swelling, degradation, interfacial phenomena, and more." />
+  <meta name="description" content="OptiFluid Analytics provides non-invasive, in-situ spectroscopic ellipsometry of thin films in liquids, vapors, and high-pressure gases. Precision data on thickness, refractive index, swelling, degradation, and interfacial phenomena." />
   <meta name="theme-color" content="#0f172a" />
   <style>
     :root {
       --bg: #0b1020; --bg2: #0f172a; --txt: #e2e8f0; --muted: #94a3b8;
       --brand: #6ee7b7; --brand2: #a78bfa; --card: #111827;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0 }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    /* UX FIX: Smooth scrolling for anchor links */
+    html { scroll-behavior: smooth; }
+    
     body { 
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
       color: var(--txt); 
       background: linear-gradient(180deg, var(--bg), var(--bg2)); 
     }
-    a { color: inherit; text-decoration: none }
+    a { color: inherit; text-decoration: none; }
     
     header { 
       position: sticky; top: 0; background: rgba(11,16,32,.8);
-      backdrop-filter: blur(8px); border-bottom: 1px solid #1f2937; z-index: 10 
+      backdrop-filter: blur(8px); border-bottom: 1px solid #1f2937; z-index: 10;
     }
-    .container { max-width: 1100px; margin: auto; padding: 24px }
-    .nav { display: flex; justify-content: space-between; align-items: center }
-    .brand { font-weight: 800; font-size: 1.2rem }
-    nav ul { display: flex; gap: 16px; list-style: none }
+    .container { max-width: 1100px; margin: auto; padding: 24px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-weight: 800; font-size: 1.2rem; }
+    nav ul { display: flex; gap: 16px; list-style: none; }
     
     .btn { 
       display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
       border-radius: 999px; border: 1px solid #334155; background: #0b1328;
-      color: var(--txt); transition: .2s 
+      color: var(--txt); transition: .2s;
     }
     .btn.primary { 
       background: linear-gradient(90deg, var(--brand), var(--brand2)); 
@@ -39,77 +43,41 @@
     }
     .btn:hover { transform: translateY(-2px); }
     
-    .hero { padding: 70px 24px 36px; text-align: center }
-    h1 { font-size: clamp(28px, 5vw, 46px); line-height: 1.1 }
-    h2 { font-size: clamp(22px, 3.5vw, 34px); margin-bottom: 24px; text-align: center }
+    .hero { padding: 70px 24px 36px; text-align: center; }
+    h1 { font-size: clamp(28px, 5vw, 46px); line-height: 1.1; }
+    h2 { font-size: clamp(22px, 3.5vw, 34px); margin-bottom: 24px; text-align: center; }
     p { margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
     
     /* --- KAUST BADGE CSS --- */
     .kaust-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #334155;
-      padding: 8px 20px;
-      border-radius: 999px;
-      margin-bottom: 28px;
-      font-size: 0.9rem;
-      color: var(--e2e8f0);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid #334155;
+      padding: 8px 20px; border-radius: 999px; margin-bottom: 28px;
+      font-size: 0.9rem; color: var(--e2e8f0); box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .kaust-badge img { height: 80px; width: auto; border-radius: 2px; }
 
-    .cards { 
-      display: grid; 
-      grid-template-columns: repeat(2, 1fr); 
-      gap: 32px; 
-    }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
     
     /* --- CARD CSS --- */
     .card { 
-      background: var(--card); border: 1px solid #172033; 
-      border-radius: 16px; 
-      transition: transform 0.2s, border-color 0.2s; 
-      overflow: hidden; 
-      position: relative; 
+      background: var(--card); border: 1px solid #172033; border-radius: 16px; 
+      transition: transform 0.2s, border-color 0.2s; overflow: hidden; position: relative; 
     }
     .card:hover { transform: translateY(-3px); border-color: #334155; }
-
-    .card-content {
-      padding: 36px;
-      transition: opacity 0.3s ease; 
-    }
-    
+    .card-content { padding: 36px; transition: opacity 0.3s ease; }
     .card h3 { color: var(--brand); margin-bottom: 16px; font-size: 1.35rem; }
     .card p { line-height: 1.8; font-size: 1.05rem; margin-bottom: 0; }
     
     /* --- REPLACEMENT IMAGE HOVER EFFECT --- */
     .hover-reveal .image-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      transition: opacity 0.3s ease;
-      background: var(--card); 
-      pointer-events: none; 
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0; z-index: 2; transition: opacity 0.3s ease; background: var(--card); pointer-events: none; 
     }
-    
     .hover-reveal:hover .card-content { opacity: 0; }
     .hover-reveal:hover .image-wrapper { opacity: 1; }
-
     .hover-reveal .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      /* CHANGED from cover to contain, and added padding */
-      object-fit: contain; 
-      padding: 24px;
-      box-sizing: border-box;
-      display: block;
+      width: 100%; height: 100%; object-fit: contain; padding: 24px; box-sizing: border-box; display: block;
     }
 
     /* --- ABOUT SECTION IMAGE & CAPTION CSS --- */
@@ -123,63 +91,30 @@
     
     /* --- VALUE PROPS EXPANDABLE SECTION (MOVED TO CONTACT) --- */
     .value-props {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+      max-height: 0; opacity: 0; overflow: hidden;
       transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.4s ease, padding-top 0.4s ease;
     }
-    /* When hovering anywhere on the Contact card, expand the hidden div */
     #contact .card:hover .value-props {
-      max-height: 800px; 
-      opacity: 1;
-      margin-top: 32px;
-      padding-top: 32px;
-      border-top: 1px solid #1f2937;
+      max-height: 800px; opacity: 1; margin-top: 32px; padding-top: 32px; border-top: 1px solid #1f2937;
     }
-    .vp-item h4 {
-      color: var(--brand2);
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-    .vp-item p {
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-    .vp-item strong {
-      color: var(--brand);
-    }
+    .vp-item h4 { color: var(--brand2); margin-bottom: 8px; font-size: 1.1rem; }
+    .vp-item p { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.5; }
+    .vp-item strong { color: var(--brand); }
 
     /* --- REFERENCES SECTION CSS WITH CUSTOM SCROLLBAR --- */
     .ref-list {
-      list-style-type: none;
-      padding-left: 0;
-      max-height: 400px; 
-      overflow-y: auto;  
-      padding-right: 16px; 
+      list-style-type: none; padding-left: 0; max-height: 400px; overflow-y: auto; padding-right: 16px; 
     }
-    
     .ref-list::-webkit-scrollbar { width: 6px; }
     .ref-list::-webkit-scrollbar-track { background: #0f172a; border-radius: 4px; }
     .ref-list::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
     .ref-list::-webkit-scrollbar-thumb:hover { background: var(--brand); }
-
     .ref-list li {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #1f2937;
-      line-height: 1.6;
-      color: var(--txt);
-      font-size: 0.95rem;
+      margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #1f2937;
+      line-height: 1.6; color: var(--txt); font-size: 0.95rem;
     }
-    .ref-list li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
+    .ref-list li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
     .ref-list em { color: var(--muted); }
     
     footer { border-top: 1px solid #172033; padding: 20px; text-align: center; color: var(--muted); margin-top: 40px; }
@@ -188,26 +123,23 @@
       width: 100%; padding: 12px; border-radius: 6px; 
       border: 1px solid #334155; background: #0b1328; color: var(--txt); 
       margin-top: 6px; margin-bottom: 16px; 
+      font-size: 16px; /* MOBILE FIX: Prevents iOS Safari from auto-zooming on inputs */
     }
     form input:focus, form textarea:focus, form select:focus { outline: none; border-color: var(--brand2); }
     
-    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 24px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .roadmap-badge { 
       display: inline-block; background: #334155; color: #e2e8f0; 
-      font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; 
-      vertical-align: middle; margin-left: 8px; 
+      font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; vertical-align: middle; margin-left: 8px; 
     }
     
     @media(max-width: 768px) {
       .cards { grid-template-columns: 1fr; } 
       .grid-2 { grid-template-columns: 1fr; }
-      
       .card-content { padding: 24px; }
       .about-content { flex-direction: column; text-align: center; }
       .kaust-badge { flex-direction: column; gap: 8px; text-align: center; border-radius: 16px; padding: 12px; }
-      
-      /* Make value props stack on mobile */
       .value-props { grid-template-columns: 1fr; }
       #contact .card:hover .value-props { max-height: 1400px; }
     }
@@ -263,7 +195,7 @@
         <div class="card hover-reveal">
           <div class="card-content">
             <h3>Fluid & Vapor Interactions</h3>
-            <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including mixtures. Enables tracking swelling magnitude and kinetics, sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
+            <p>Real-time monitoring of material responses during immersion in complex liquids (organics, acids, bases) or exposure to controlled vapors, including binary mixtures. Ideal for tracking swelling magnitude and kinetics, sorption capacity, dissolution rates, and morphological stability near room temperature.</p>
           </div>
           <div class="image-wrapper">
             <img src="./image2.jpg" alt="Fluid Interactions Setup" />
@@ -320,10 +252,10 @@
                 <a href="mailto:w.ogieglo@gmail.com" style="color:var(--brand);text-decoration:underline;">w.ogieglo@gmail.com</a>
               </div>
               <div style="margin-top: 4px;">
-                <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">Google Scholar Profile ↗</a>
+                <a href="https://scholar.google.com/citations?user=jVv7iDEAAAAJ" target="_blank" rel="noopener noreferrer" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">Google Scholar Profile ↗</a>
               </div>
               <div style="margin-top: 4px;">
-                <a href="http://dx.doi.org/10.3990/1.9789036536318" target="_blank" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">PhD Thesis: In-situ spectroscopic ellipsometry for studies of thin films and membranes ↗</a>
+                <a href="http://dx.doi.org/10.3990/1.9789036536318" target="_blank" rel="noopener noreferrer" style="color:var(--brand2);text-decoration:underline; font-weight: 600;">PhD Thesis: In-situ spectroscopic ellipsometry for studies of thin films and membranes ↗</a>
               </div>
             </div>
 
@@ -395,51 +327,51 @@
       <h2>Selected Literature References</h2>
       <div class="card" style="max-width:1050px;margin:auto;">
         <ul class="ref-list">
-          <li>[1] <strong>W. Ogieglo</strong>, K. Knozowska, T. Puspasari, Z. Ali, J. Kujawa, E. Korczeniewski, A.P. Terzyk, W. Kujawski, I. Pinnau, Unlocking complex chemical and morphological transformations during thermal treatment of o-hydroxyl-substituted polyimide of intrinsic microporosity: Impact on ethanol/cyclohexane separation, <em>Journal of Membrane Science</em> 684 (2023). <a href="https://doi.org/10.1016/j.memsci.2023.121881" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[1] <strong>W. Ogieglo</strong>, K. Knozowska, T. Puspasari, Z. Ali, J. Kujawa, E. Korczeniewski, A.P. Terzyk, W. Kujawski, I. Pinnau, Unlocking complex chemical and morphological transformations during thermal treatment of o-hydroxyl-substituted polyimide of intrinsic microporosity: Impact on ethanol/cyclohexane separation, <em>Journal of Membrane Science</em> 684 (2023). <a href="https://doi.org/10.1016/j.memsci.2023.121881" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[2] <strong>W. Ogieglo</strong>, K. Song, C. Chen, Q. Lei, Y. Han, I. Pinnau, Nano-confinement effects on structural development and organic solvent-induced swelling of ultrathin carbon molecular sieve films, <em>ACS Applied Materials & Interfaces</em> 13(18) (2021) 21765-21774. <a href="https://doi.org/10.1021/acsami.1c03392" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[2] <strong>W. Ogieglo</strong>, K. Song, C. Chen, Q. Lei, Y. Han, I. Pinnau, Nano-confinement effects on structural development and organic solvent-induced swelling of ultrathin carbon molecular sieve films, <em>ACS Applied Materials & Interfaces</em> 13(18) (2021) 21765-21774. <a href="https://doi.org/10.1021/acsami.1c03392" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[3] <strong>W. Ogieglo</strong>, T. Puspasari, X. Ma, I. Pinnau, Sub-100 nm carbon molecular sieve membranes from a polymer of intrinsic microporosity precursor: Physical aging and near-equilibrium gas separation properties, <em>Journal of Membrane Science</em> 597 (2020) 117752. <a href="https://doi.org/10.1016/j.memsci.2019.117752" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[3] <strong>W. Ogieglo</strong>, T. Puspasari, X. Ma, I. Pinnau, Sub-100 nm carbon molecular sieve membranes from a polymer of intrinsic microporosity precursor: Physical aging and near-equilibrium gas separation properties, <em>Journal of Membrane Science</em> 597 (2020) 117752. <a href="https://doi.org/10.1016/j.memsci.2019.117752" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[4] <strong>W. Ogieglo</strong>, T. Puspasari, M.K. Hota, N. Wehbe, H.N. Alshareef, I. Pinnau, Nanohybrid thin-film composite carbon molecular sieve membranes, <em>Materials Today Nano</em> 9 (2020) 100065. <a href="https://doi.org/10.1016/j.mtnano.2019.100065" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[4] <strong>W. Ogieglo</strong>, T. Puspasari, M.K. Hota, N. Wehbe, H.N. Alshareef, I. Pinnau, Nanohybrid thin-film composite carbon molecular sieve membranes, <em>Materials Today Nano</em> 9 (2020) 100065. <a href="https://doi.org/10.1016/j.mtnano.2019.100065" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[5] <strong>W. Ogieglo</strong>, J.A. Idarraga-Mora, S.M. Husson, I. Pinnau, Direct ellipsometry for non-destructive characterization of interfacially-polymerized thin-film composite membranes, <em>Journal of Membrane Science</em> 608 (2020). <a href="https://doi.org/10.1016/j.memsci.2020.118174" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[5] <strong>W. Ogieglo</strong>, J.A. Idarraga-Mora, S.M. Husson, I. Pinnau, Direct ellipsometry for non-destructive characterization of interfacially-polymerized thin-film composite membranes, <em>Journal of Membrane Science</em> 608 (2020). <a href="https://doi.org/10.1016/j.memsci.2020.118174" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[6] <strong>W. Ogieglo</strong>, G. Genduso, J. Rubner, J. Hofmann-Préveraud de Vaumas, M. Wessling, I. Pinnau, Co2/ch4 pure- and mixed-gas dilation and sorption in thin (∼500 nm) and ultrathin (∼50 nm) polymers of intrinsic microporosity, <em>Macromolecules</em> 53(20) (2020) 8765-8774. <a href="https://doi.org/10.1021/acs.macromol.0c01163" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[6] <strong>W. Ogieglo</strong>, G. Genduso, J. Rubner, J. Hofmann-Préveraud de Vaumas, M. Wessling, I. Pinnau, CO₂/CH₄ pure- and mixed-gas dilation and sorption in thin (∼500 nm) and ultrathin (∼50 nm) polymers of intrinsic microporosity, <em>Macromolecules</em> 53(20) (2020) 8765-8774. <a href="https://doi.org/10.1021/acs.macromol.0c01163" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[7] <strong>W. Ogieglo</strong>, A. Furchner, X. Ma, K. Hazazi, A.T. Alhazmi, I. Pinnau, Thin composite carbon molecular sieve membranes from a polymer of intrinsic microporosity precursor, <em>ACS Appl Mater Interfaces</em> 11(20) (2019) 18770-18781. <a href="https://doi.org/10.1021/acsami.9b04602" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[7] <strong>W. Ogieglo</strong>, A. Furchner, X. Ma, K. Hazazi, A.T. Alhazmi, I. Pinnau, Thin composite carbon molecular sieve membranes from a polymer of intrinsic microporosity precursor, <em>ACS Appl Mater Interfaces</em> 11(20) (2019) 18770-18781. <a href="https://doi.org/10.1021/acsami.9b04602" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[8] <strong>W. Ogieglo</strong>, B. Ghanem, X. Ma, M. Wessling, I. Pinnau, High-pressure co2 sorption in polymers of intrinsic microporosity under ultrathin film confinement, <em>ACS Appl Mater Interfaces</em> 10(13) (2018) 11369-11376. <a href="https://doi.org/10.1021/acsami.8b01402" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[8] <strong>W. Ogieglo</strong>, B. Ghanem, X. Ma, M. Wessling, I. Pinnau, High-pressure CO₂ sorption in polymers of intrinsic microporosity under ultrathin film confinement, <em>ACS Appl Mater Interfaces</em> 10(13) (2018) 11369-11376. <a href="https://doi.org/10.1021/acsami.8b01402" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[9] <strong>W. Ogieglo</strong>, K. Tempelman, S. Napolitano, N.E. Benes, Evidence of a transition layer between the free surface and the bulk, <em>J Phys Chem Lett</em> 9(6) (2018) 1195-1199. <a href="https://doi.org/10.1021/acs.jpclett.8b00076" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[9] <strong>W. Ogieglo</strong>, K. Tempelman, S. Napolitano, N.E. Benes, Evidence of a transition layer between the free surface and the bulk, <em>J Phys Chem Lett</em> 9(6) (2018) 1195-1199. <a href="https://doi.org/10.1021/acs.jpclett.8b00076" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[10] <strong>W. Ogieglo</strong>, I. Pinnau, M. Wessling, In-situ non-invasive imaging of liquid-immersed thin film composite membranes, <em>Journal of Membrane Science</em> 546 (2018) 206-214. <a href="https://doi.org/10.1016/j.memsci.2017.10.027" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[10] <strong>W. Ogieglo</strong>, I. Pinnau, M. Wessling, In-situ non-invasive imaging of liquid-immersed thin film composite membranes, <em>Journal of Membrane Science</em> 546 (2018) 206-214. <a href="https://doi.org/10.1016/j.memsci.2017.10.027" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[11] <strong>W. Ogieglo</strong>, K. Rahimi, S.B. Rauer, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, How do organic vapors swell ultrathin films of polymer of intrinsic microporosity pim-1?, <em>The Journal of Physical Chemistry B</em> 121(29) (2017) 7210-7220. <a href="https://doi.org/10.1021/acs.jpcb.7b03891" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[11] <strong>W. Ogieglo</strong>, K. Rahimi, S.B. Rauer, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, How do organic vapors swell ultrathin films of polymer of intrinsic microporosity PIM-1?, <em>The Journal of Physical Chemistry B</em> 121(29) (2017) 7210-7220. <a href="https://doi.org/10.1021/acs.jpcb.7b03891" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[12] <strong>W. Ogieglo</strong>, A. Furchner, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, Mixed-penetrant sorption in ultrathin films of polymer of intrinsic microporosity pim-1, <em>The Journal of Physical Chemistry B</em> 121(43) (2017) 10190-10197. <a href="https://doi.org/10.1021/acs.jpcb.7b10061" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[12] <strong>W. Ogieglo</strong>, A. Furchner, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, Mixed-penetrant sorption in ultrathin films of polymer of intrinsic microporosity PIM-1, <em>The Journal of Physical Chemistry B</em> 121(43) (2017) 10190-10197. <a href="https://doi.org/10.1021/acs.jpcb.7b10061" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[13] <strong>W. Ogieglo</strong>, Z.P. Madzarevic, M.J.T. Raaijmakers, T.J. Dingemans, N.E. Benes, High-pressure sorption of carbon dioxide and methane in all-aromatic poly(etherimide)-based membranes, <em>Journal of Polymer Science Part B: Polymer Physics</em> 54(10) (2016) 986-993. <a href="https://doi.org/10.1002/polb.24001" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[13] <strong>W. Ogieglo</strong>, Z.P. Madzarevic, M.J.T. Raaijmakers, T.J. Dingemans, N.E. Benes, High-pressure sorption of carbon dioxide and methane in all-aromatic poly(etherimide)-based membranes, <em>Journal of Polymer Science Part B: Polymer Physics</em> 54(10) (2016) 986-993. <a href="https://doi.org/10.1002/polb.24001" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[14] <strong>W. Ogieglo</strong>, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, How much do ultrathin polymers with intrinsic microporosity swell in liquids?, <em>The Journal of Physical Chemistry B</em> 120(39) (2016) 10403-10410. <a href="https://doi.org/10.1021/acs.jpcb.6b06807" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[14] <strong>W. Ogieglo</strong>, B. Ghanem, X. Ma, I. Pinnau, M. Wessling, How much do ultrathin polymers with intrinsic microporosity swell in liquids?, <em>The Journal of Physical Chemistry B</em> 120(39) (2016) 10403-10410. <a href="https://doi.org/10.1021/acs.jpcb.6b06807" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[15] <strong>W. Ogieglo</strong>, H. Wormeester, K.-J. Eichhorn, M. Wessling, N.E. Benes, In situ ellipsometry studies on swelling of thin polymer films: A review, <em>Progress in Polymer Science</em> (0) (2014). <a href="https://doi.org/10.1016/j.progpolymsci.2014.09.004" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[15] <strong>W. Ogieglo</strong>, H. Wormeester, K.-J. Eichhorn, M. Wessling, N.E. Benes, In situ ellipsometry studies on swelling of thin polymer films: A review, <em>Progress in Polymer Science</em> (0) (2014). <a href="https://doi.org/10.1016/j.progpolymsci.2014.09.004" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[16] <strong>W. Ogieglo</strong>, L. Upadhyaya, M. Wessling, A. Nijmeijer, N.E. Benes, Effects of time, temperature, and pressure in the vicinity of the glass transition of a swollen polymer, <em>Journal of Membrane Science</em> 464 (2014) 80-85. <a href="https://doi.org/10.1016/j.memsci.2014.04.013" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[16] <strong>W. Ogieglo</strong>, L. Upadhyaya, M. Wessling, A. Nijmeijer, N.E. Benes, Effects of time, temperature, and pressure in the vicinity of the glass transition of a swollen polymer, <em>Journal of Membrane Science</em> 464 (2014) 80-85. <a href="https://doi.org/10.1016/j.memsci.2014.04.013" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[17] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Effective medium approximations for penetrant sorption in glassy polymers accounting for excess free volume, <em>Polymer</em> 55(7) (2014) 1737-1744. <a href="https://doi.org/10.1016/j.polymer.2014.02.040" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[17] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Effective medium approximations for penetrant sorption in glassy polymers accounting for excess free volume, <em>Polymer</em> 55(7) (2014) 1737-1744. <a href="https://doi.org/10.1016/j.polymer.2014.02.040" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[18] <strong>W. Ogieglo</strong>, M. Wessling, N.E. Benes, Polymer relaxations in thin films in the vicinity of a penetrant- or temperature-induced glass transition, <em>Macromolecules</em> 47(11) (2014) 3654-3660. <a href="https://doi.org/10.1021/ma5002707" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[18] <strong>W. Ogieglo</strong>, M. Wessling, N.E. Benes, Polymer relaxations in thin films in the vicinity of a penetrant- or temperature-induced glass transition, <em>Macromolecules</em> 47(11) (2014) 3654-3660. <a href="https://doi.org/10.1021/ma5002707" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[19] <strong>W. Ogieglo</strong>, H. van der Werf, K. Tempelman, H. Wormeester, M. Wessling, A. Nijmeijer, N.E. Benes, N-hexane induced swelling of thin pdms films under non-equilibrium nanofiltration permeation conditions, resolved by spectroscopic ellipsometry, <em>Journal of Membrane Science</em> 437(0) (2013) 313-323. <a href="https://doi.org/10.1016/j.memsci.2013.04.039" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[19] <strong>W. Ogieglo</strong>, H. van der Werf, K. Tempelman, H. Wormeester, M. Wessling, A. Nijmeijer, N.E. Benes, N-hexane induced swelling of thin PDMS films under non-equilibrium nanofiltration permeation conditions, resolved by spectroscopic ellipsometry, <em>Journal of Membrane Science</em> 437(0) (2013) 313-323. <a href="https://doi.org/10.1016/j.memsci.2013.04.039" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[20] <strong>W. Ogieglo</strong>, J. de Grooth, H. Wormeester, M. Wessling, K. Nijmeijer, N.E. Benes, Relaxation induced optical anisotropy during dynamic overshoot swelling of zwitterionic polymer films, <em>Thin Solid Films</em> 545(0) (2013) 320-326. <a href="https://doi.org/10.1016/j.tsf.2013.07.077" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[20] <strong>W. Ogieglo</strong>, J. de Grooth, H. Wormeester, M. Wessling, K. Nijmeijer, N.E. Benes, Relaxation induced optical anisotropy during dynamic overshoot swelling of zwitterionic polymer films, <em>Thin Solid Films</em> 545(0) (2013) 320-326. <a href="https://doi.org/10.1016/j.tsf.2013.07.077" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[21] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Probing the surface swelling in ultra-thin supported polystyrene films during case ii diffusion of n-hexane, <em>Macromolecular Chemistry and Physics</em> 214(21) (2013) 2480-2488. <a href="https://doi.org/10.1002/macp.201300371" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[21] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Probing the surface swelling in ultra-thin supported polystyrene films during Case II diffusion of n-hexane, <em>Macromolecular Chemistry and Physics</em> 214(21) (2013) 2480-2488. <a href="https://doi.org/10.1002/macp.201300371" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[22] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Temperature-induced transition of the diffusion mechanism of n-hexane in ultra-thin polystyrene films, resolved by in-situ spectroscopic ellipsometry, <em>Polymer</em> 54(1) (2013) 341-348. <a href="https://doi.org/10.1016/j.polymer.2012.11.038" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[22] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Temperature-induced transition of the diffusion mechanism of n-hexane in ultra-thin polystyrene films, resolved by in-situ spectroscopic ellipsometry, <em>Polymer</em> 54(1) (2013) 341-348. <a href="https://doi.org/10.1016/j.polymer.2012.11.038" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
           
-          <li>[23] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Spectroscopic ellipsometry analysis of a thin film composite membrane consisting of polysulfone on a porous α-alumina support, <em>ACS Applied Materials & Interfaces</em> (2012). <a href="https://pubs.acs.org/doi/10.1021/am2015958" target="_blank" style="color:var(--brand);">[Link]</a></li>
+          <li>[23] <strong>W. Ogieglo</strong>, H. Wormeester, M. Wessling, N.E. Benes, Spectroscopic ellipsometry analysis of a thin film composite membrane consisting of polysulfone on a porous α-alumina support, <em>ACS Applied Materials & Interfaces</em> (2012). <a href="https://pubs.acs.org/doi/10.1021/am2015958" target="_blank" rel="noopener noreferrer" style="color:var(--brand);">[Link]</a></li>
         </ul>
       </div>
     </section>
