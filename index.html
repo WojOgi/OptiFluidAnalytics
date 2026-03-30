@@ -70,7 +70,6 @@
       overflow-x: hidden;
     }
 
-    /* Accessibility: skip link */
     .skip-link {
       position: absolute;
       left: -9999px;
@@ -85,7 +84,6 @@
     }
     .skip-link:focus { left: 8px; }
 
-    /* Accessible focus rings */
     :focus-visible {
       outline: 2px solid var(--teal);
       outline-offset: 3px;
@@ -112,7 +110,6 @@
       z-index: 0;
     }
 
-    /* Atmospheric radial glow */
     body::after {
       content: '';
       position: fixed;
@@ -195,7 +192,6 @@
       gap: 16px;
     }
 
-    /* Brand */
     .brand {
       font-family: var(--font-head);
       font-weight: 800;
@@ -205,7 +201,6 @@
     }
     .brand .accent { color: var(--teal); }
 
-    /* Desktop nav */
     .nav-links {
       display: flex;
       align-items: center;
@@ -224,7 +219,6 @@
       background: rgba(255,255,255,.06);
     }
 
-    /* CTA button in nav */
     .btn-nav {
       font-family: var(--font-head);
       font-size: 0.88rem;
@@ -242,7 +236,6 @@
     .btn-nav:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 24px rgba(110,231,183,.35); }
     .btn-nav:active { transform: scale(.98); }
 
-    /* Hamburger (mobile) */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -266,7 +259,6 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile drawer */
     .mobile-menu {
       display: none;
       position: fixed;
@@ -330,7 +322,6 @@
       line-height: 1.7;
     }
 
-    /* Hero metric pills */
     .hero-metrics {
       display: flex;
       flex-wrap: wrap;
@@ -350,7 +341,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* Hero CTA */
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 
     .btn-primary {
@@ -450,7 +440,6 @@
       overflow: hidden;
       position: relative;
       transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
-      group: true;
     }
     .service-card:hover {
       border-color: var(--border-hi);
@@ -458,7 +447,6 @@
       box-shadow: 0 16px 48px rgba(0,0,0,.35), 0 0 0 1px rgba(110,231,183,.08);
     }
 
-    /* Card top accent line */
     .service-card::before {
       content: '';
       position: absolute;
@@ -500,7 +488,6 @@
     }
     .service-card p { font-size: 0.97rem; line-height: 1.75; }
 
-    /* Spec chips */
     .spec-chips {
       display: flex;
       flex-wrap: wrap;
@@ -517,7 +504,6 @@
       border-radius: var(--rad-xl);
     }
 
-    /* Image hover overlay */
     .service-card-image {
       position: absolute;
       inset: 0;
@@ -552,16 +538,9 @@
       color: var(--txt-faint);
       margin-right: 8px;
     }
-    .service-card-citation strong {
-      color: var(--txt);
-      font-weight: 600;
-    }
-    .service-card-citation em {
-      color: var(--txt-faint);
-      font-style: italic;
-    }
+    .service-card-citation strong { color: var(--txt); font-weight: 600; }
+    .service-card-citation em { color: var(--txt-faint); font-style: italic; }
 
-    /* Roadmap badge */
     .roadmap-pill {
       display: inline-flex;
       align-items: center;
@@ -580,6 +559,31 @@
     }
 
     /* ══════════════════════════════════════════
+       TTO BADGE
+    ══════════════════════════════════════════ */
+    .tto-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(110,231,183,.06);
+      border: 1px solid rgba(110,231,183,.2);
+      color: var(--teal);
+      padding: 6px 14px;
+      border-radius: var(--rad-xl);
+      margin-top: 20px;
+      width: fit-content;
+    }
+    .tto-badge::before {
+      content: '✓';
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+
+    /* ══════════════════════════════════════════
        ABOUT
     ══════════════════════════════════════════ */
     .about-card {
@@ -592,9 +596,7 @@
     }
     .about-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 52px; align-items: start; }
 
-    .about-img-wrap {
-      position: relative;
-    }
+    .about-img-wrap { position: relative; }
     .about-img-wrap::after {
       content: '';
       position: absolute;
@@ -698,19 +700,23 @@
       transition: border-color 0.2s;
     }
     .vp-item:hover { border-color: var(--border-hi); }
-    .vp-item h4 {
-      color: var(--violet);
-      margin-bottom: 8px;
-      font-size: 0.9rem;
-    }
-    .vp-item p {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      margin-bottom: 6px;
-    }
+    .vp-item h4 { color: var(--violet); margin-bottom: 8px; font-size: 0.9rem; }
+    .vp-item p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 6px; }
     .vp-item .highlight { color: var(--teal); font-size: 0.82rem; }
 
-    /* Form card */
+    /* Pilot note */
+    .pilot-note {
+      margin-top: 24px;
+      padding: 14px 16px;
+      background: rgba(110,231,183,.04);
+      border: 1px solid rgba(110,231,183,.18);
+      border-radius: var(--rad-md);
+      font-size: 0.85rem;
+      color: var(--txt-sub);
+      line-height: 1.6;
+    }
+    .pilot-note strong { color: var(--teal); }
+
     .form-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -742,10 +748,8 @@
       background: rgba(255,255,255,.03);
       color: var(--txt);
       font-family: var(--font-body);
-      font-size: 0.95rem;
-      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-      /* iOS: prevent zoom */
       font-size: max(16px, 0.95rem);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
       appearance: none;
     }
@@ -774,7 +778,6 @@
     .field select option { background: var(--bg-mid); }
     .field textarea { resize: vertical; min-height: 120px; }
 
-    /* Privacy notice */
     .privacy-note {
       font-size: 0.78rem;
       color: var(--txt-faint);
@@ -787,7 +790,6 @@
     }
     .privacy-note a { color: var(--txt-sub); text-decoration: underline; }
 
-    /* Submit button */
     .submit-btn {
       width: 100%;
       padding: 13px;
@@ -824,7 +826,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ══════════════════════════════════════════
-       TOAST NOTIFICATION
+       TOAST
     ══════════════════════════════════════════ */
     #toast {
       position: fixed;
@@ -870,18 +872,13 @@
       align-items: center;
       justify-content: space-between;
     }
-    .refs-count {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--txt-faint);
-    }
+    .refs-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--txt-faint); }
     .refs-body {
       padding: 8px 36px;
       max-height: 460px;
       overflow-y: auto;
       overscroll-behavior: contain;
     }
-    /* Custom scrollbar */
     .refs-body::-webkit-scrollbar { width: 5px; }
     .refs-body::-webkit-scrollbar-track { background: transparent; }
     .refs-body::-webkit-scrollbar-thumb { background: #1e3050; border-radius: 4px; }
@@ -1031,7 +1028,6 @@
   <main id="main-content">
 
     <section class="hero" aria-labelledby="hero-heading">
-
       <h1 id="hero-heading" class="reveal reveal-delay-1">
         Shedding light on<br>
         <span class="hero-gradient">materials in fluids</span>
@@ -1089,7 +1085,7 @@
       <div class="section-header reveal">
         <span class="section-label">Analytical Capabilities</span>
         <h2 id="services-heading">What we measure</h2>
-        <p>Customized environmental experiments from ambient to extreme conditions — designed around your material and research question.</p>
+        <p>Customised environmental experiments from ambient to extreme conditions — designed around your material and research question.</p>
       </div>
 
       <div class="services-grid" role="list">
@@ -1214,9 +1210,14 @@
             <p class="about-title">Research Scientist</p>
             <h3 class="about-name">Dr. Wojciech Ogieglo</h3>
 
-            <p>Over a decade of specialized experience in polymer thin films, membrane science, and in-situ ellipsometry, supported by 60+ high-impact peer-reviewed articles.</p>
-            <p>Our infrastructure goes beyond standard ambient measurements — offering customized environmental experiments to simulate real-world industrial conditions. We operate in full compliance with institutional technology transfer frameworks.</p>
-            <p>Whether you need to characterize a novel coating, understand membrane stability, or quantify gas uptake at process conditions, we design the experiment around your specific question.</p>
+            <p>Over a decade of specialised experience in polymer thin films, membrane science, and in-situ ellipsometry, supported by 60+ high-impact peer-reviewed articles.</p>
+
+            <p>The analytical infrastructure goes beyond standard ambient measurements — offering customised environmental experiments to simulate real-world industrial conditions. Each experiment is designed around your specific material and research question.</p>
+
+            <!-- ✅ CHANGED: affirmative TTO partnership statement -->
+            <div class="tto-badge" aria-label="Partnership with KAUST Technology Transfer Office">
+              In partnership with the KAUST Technology Transfer Office
+            </div>
 
             <div class="about-links" aria-label="Contact and profile links">
               <div>
@@ -1248,7 +1249,7 @@
       <div class="section-header reveal">
         <span class="section-label">Get in Touch</span>
         <h2 id="contact-heading">Request an analysis</h2>
-        <p>Tell us about your film, the environment you need tested, and your research goal. We'll respond to discuss feasibility, setup design, and timelines.</p>
+        <p>Tell me about your film, the environment you need tested, and your research goal. I'll respond to discuss feasibility, setup design, and timelines.</p>
       </div>
 
       <div class="contact-grid">
@@ -1266,7 +1267,7 @@
             <div class="vp-item">
               <h4>💧 Swelling &amp; sorption</h4>
               <p>Real-time kinetics during liquid or vapor exposure for membranes, coatings, and drug carriers.</p>
-              <span class="highlight">→ Optimize material lifetime</span>
+              <span class="highlight">→ Optimise material lifetime</span>
             </div>
             <div class="vp-item">
               <h4>📐 Optical constants</h4>
@@ -1278,6 +1279,11 @@
               <p>Gas sorption and material stability at industrially-relevant pressures up to 50 bar.</p>
               <span class="highlight">→ Predict field performance</span>
             </div>
+          </div>
+
+          <!-- ✅ NEW: free pilot note -->
+          <div class="pilot-note">
+            <strong>Free pilot available.</strong> For well-defined use cases, I offer a no-cost pilot measurement to demonstrate value before committing to a full project. Select "Free Pilot Project" in the form to discuss eligibility.
           </div>
         </aside>
 
@@ -1331,7 +1337,7 @@
 
             <div class="form-row">
               <div class="field" id="field-org">
-                <label for="inp-org">Organization / Company</label>
+                <label for="inp-org">Organisation / Company</label>
                 <input
                   type="text"
                   id="inp-org"
@@ -1350,6 +1356,7 @@
                   aria-describedby="err-usecase"
                 >
                   <option value="" disabled selected>Select a capability…</option>
+                  <option value="Free Pilot Project">⭐ Free Pilot Project</option>
                   <option value="General Consulting">General Consulting</option>
                   <option value="Thermal Dynamics">Thermal Dynamics (−50 to 560 °C)</option>
                   <option value="Liquid / Vapor Swelling">Liquid / Mixed Vapor Swelling</option>
@@ -1641,27 +1648,15 @@
   <script>
     'use strict';
 
-    /* ─────────────────────────────────────────
-       SCROLL TO TOP ON LOAD
-    ───────────────────────────────────────── */
     if (history.scrollRestoration) history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
 
-    /* ─────────────────────────────────────────
-       FOOTER YEAR
-    ───────────────────────────────────────── */
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    /* ─────────────────────────────────────────
-       HEADER SCROLL SHADOW
-    ───────────────────────────────────────── */
     const header = document.getElementById('site-header');
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* ─────────────────────────────────────────
-       MOBILE MENU
-    ───────────────────────────────────────── */
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1675,14 +1670,10 @@
     menuToggle.addEventListener('click', () => toggleMenu(!menuToggle.classList.contains('open')));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 
-    // Close on Escape
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu(false);
     });
 
-    /* ─────────────────────────────────────────
-       SCROLL-IN REVEAL
-    ───────────────────────────────────────── */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1694,9 +1685,6 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ─────────────────────────────────────────
-       ACTIVE NAV LINK ON SCROLL
-    ───────────────────────────────────────── */
     const sections = ['services', 'about', 'contact', 'references'];
     const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -1713,9 +1701,6 @@
       if (el) sectionObserver.observe(el);
     });
 
-    /* ─────────────────────────────────────────
-       ANIMATED STAT COUNTERS
-    ───────────────────────────────────────── */
     const counters = document.querySelectorAll('.count');
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1739,9 +1724,6 @@
 
     counters.forEach(c => counterObserver.observe(c));
 
-    /* ─────────────────────────────────────────
-       TOAST HELPER
-    ───────────────────────────────────────── */
     function showToast(msg, type = 'success') {
       const toast = document.getElementById('toast');
       const icon  = toast.querySelector('.toast-icon');
@@ -1751,9 +1733,6 @@
       setTimeout(() => { toast.className = ''; }, 5000);
     }
 
-    /* ─────────────────────────────────────────
-       FORM VALIDATION & SUBMISSION
-    ───────────────────────────────────────── */
     const form   = document.getElementById('contact-form');
     const submitBtn = form.querySelector('.submit-btn');
 
@@ -1773,7 +1752,6 @@
       return valid;
     }
 
-    // Live validation on blur
     Object.keys(validators).forEach(id => {
       const el = document.getElementById(id);
       el.addEventListener('blur', () => validateField(id));
@@ -1782,7 +1760,6 @@
       });
     });
 
-    // Mirror email for reply-to
     document.getElementById('inp-email').addEventListener('input', e => {
       document.getElementById('reply-to-hidden').value = e.target.value;
     });
@@ -1790,7 +1767,6 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Validate all fields
       const allValid = Object.keys(validators).map(validateField).every(Boolean);
       if (!allValid) {
         const firstError = form.querySelector('.error');
@@ -1798,7 +1774,6 @@
         return;
       }
 
-      // UI: loading state
       submitBtn.disabled = true;
       submitBtn.classList.add('loading');
 
@@ -1811,9 +1786,8 @@
         });
 
         if (response.ok) {
-          showToast('Request sent! We\'ll be in touch soon.', 'success');
+          showToast('Request sent! I\'ll be in touch soon.', 'success');
           form.reset();
-          // Clear error states
           form.querySelectorAll('.has-error').forEach(f => f.classList.remove('has-error'));
           form.querySelectorAll('.error').forEach(f => f.classList.remove('error'));
         } else {
