@@ -511,13 +511,16 @@
       z-index: 2;
       transition: opacity 0.3s var(--ease-smooth);
       background: var(--bg-card2);
-      pointer-events: none;
+      pointer-events: none; /* invisible by default — no interaction */
       display: flex;
       flex-direction: column;
       padding: 24px;
     }
     .service-card:hover .service-card-body { opacity: 0; }
-    .service-card:hover .service-card-image { opacity: 1; }
+    .service-card:hover .service-card-image {
+      opacity: 1;
+      pointer-events: auto; /* ✅ FIX: re-enable clicks when overlay is visible */
+    }
     .service-card-image img {
       width: 100%;
       max-height: 50%;
