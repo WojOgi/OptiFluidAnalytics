@@ -343,6 +343,41 @@
 
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 
+    /* ── Hero technique graphic ── */
+    .hero-graphic-wrap {
+      margin: 0 auto 36px;
+      max-width: 680px;
+      position: relative;
+    }
+    .hero-graphic-wrap img {
+      width: 100%;
+      border-radius: var(--rad-lg);
+      border: 1px solid rgba(110,231,183,.18);
+      box-shadow:
+        0 0 0 1px rgba(110,231,183,.06),
+        0 24px 64px rgba(0,0,0,.55),
+        0 0 80px rgba(110,231,183,.06);
+      display: block;
+    }
+    .hero-graphic-caption {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--txt-faint);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .hero-graphic-caption a {
+      color: var(--teal-dim);
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-graphic-caption a:hover {
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
     .btn-primary {
       font-family: var(--font-head);
       font-weight: 700;
@@ -934,6 +969,7 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.55s; }
 
     /* ══════════════════════════════════════════
        FOOTER
@@ -1048,7 +1084,15 @@
         <span class="hero-metric" role="listitem">60+ publications</span>
       </div>
 
-      <div class="hero-cta reveal reveal-delay-4">
+      <div class="hero-graphic-wrap reveal reveal-delay-4">
+        <img
+          src="./light_graphic.jpg"
+          alt="Schematic of in-situ ellipsometry: linearly polarised light passes through an operating fluid and thin film on a substrate, emerging elliptically polarised — the polarisation change encodes thickness and optical constants."
+        />
+
+      </div>
+
+      <div class="hero-cta reveal reveal-delay-5">
         <a href="#contact" class="btn-primary">
           Start a project
           <span aria-hidden="true">→</span>
