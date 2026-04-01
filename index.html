@@ -359,25 +359,6 @@
         0 0 80px rgba(110,231,183,.06);
       display: block;
     }
-    .hero-graphic-caption {
-      margin-top: 10px;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      color: var(--txt-faint);
-      text-align: center;
-      line-height: 1.5;
-    }
-    .hero-graphic-caption a {
-      color: var(--teal-dim);
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-graphic-caption a:hover {
-      color: var(--teal);
-      border-color: var(--teal);
-    }
-
     .btn-primary {
       font-family: var(--font-head);
       font-weight: 700;
@@ -1089,7 +1070,6 @@
           src="./light_graphic.jpg"
           alt="Schematic of in-situ ellipsometry: linearly polarised light passes through an operating fluid and thin film on a substrate, emerging elliptically polarised — the polarisation change encodes thickness and optical constants."
         />
-
       </div>
 
       <div class="hero-cta reveal reveal-delay-5">
@@ -1134,7 +1114,7 @@
 
       <div class="services-grid" role="list">
 
-        <article class="service-card hover-reveal reveal" role="listitem" aria-label="Thermal Dynamics capability">
+        <article class="service-card reveal" role="listitem" aria-label="Thermal Dynamics capability">
           <div class="service-card-body">
             <div class="service-icon" aria-hidden="true">🌡️</div>
             <h3>Thermal Dynamics &amp; Atmosphere</h3>
@@ -1146,7 +1126,7 @@
               <span class="spec-chip">Phase transitions</span>
             </div>
           </div>
-          <div class="service-card-image" aria-hidden="true">
+          <div class="service-card-image">
             <img src="./image1.jpg" alt="Thermal dynamics ellipsometry setup" />
             <div class="service-card-citation">
               <span class="ref-num">[22]</span>
@@ -1156,7 +1136,7 @@
           </div>
         </article>
 
-        <article class="service-card hover-reveal reveal reveal-delay-1" role="listitem" aria-label="Fluid and Vapor Interactions capability">
+        <article class="service-card reveal reveal-delay-1" role="listitem" aria-label="Fluid and Vapor Interactions capability">
           <div class="service-card-body">
             <div class="service-icon" aria-hidden="true">💧</div>
             <h3>Fluid &amp; Vapor Interactions</h3>
@@ -1168,7 +1148,7 @@
               <span class="spec-chip">Near room temp</span>
             </div>
           </div>
-          <div class="service-card-image" aria-hidden="true">
+          <div class="service-card-image">
             <img src="./image2.jpg" alt="Fluid interactions ellipsometry setup" />
             <div class="service-card-citation">
               <span class="ref-num">[9]</span>
@@ -1178,7 +1158,7 @@
           </div>
         </article>
 
-        <article class="service-card hover-reveal reveal reveal-delay-2" role="listitem" aria-label="Thickness and Optical Constants capability">
+        <article class="service-card reveal reveal-delay-2" role="listitem" aria-label="Thickness and Optical Constants capability">
           <div class="service-card-body">
             <div class="service-icon" aria-hidden="true">📐</div>
             <h3>Thickness &amp; Optical Constants</h3>
@@ -1190,7 +1170,7 @@
               <span class="spec-chip">Porous films</span>
             </div>
           </div>
-          <div class="service-card-image" aria-hidden="true">
+          <div class="service-card-image">
             <img src="./image3.jpg" alt="Optical constants modeling data" />
             <div class="service-card-citation">
               <span class="ref-num">[5]</span>
@@ -1200,7 +1180,7 @@
           </div>
         </article>
 
-        <article class="service-card hover-reveal reveal reveal-delay-3" role="listitem" aria-label="High-pressure gas capability — upcoming" style="border-style: dashed; border-color: rgba(167,139,250,.2);">
+        <article class="service-card reveal reveal-delay-3" role="listitem" aria-label="High-pressure gas capability — upcoming" style="border-style: dashed; border-color: rgba(167,139,250,.2);">
           <div class="service-card-body">
             <div class="service-icon" style="background:rgba(167,139,250,.08); border-color:rgba(167,139,250,.2);" aria-hidden="true">⚗️</div>
             <h3>
@@ -1216,7 +1196,7 @@
               <span class="spec-chip" style="color:var(--violet-dim); border-color:rgba(167,139,250,.15);">Plasticization</span>
             </div>
           </div>
-          <div class="service-card-image" aria-hidden="true">
+          <div class="service-card-image">
             <img src="./image4.jpg" alt="High pressure ellipsometry concept" />
             <div class="service-card-citation">
               <span class="ref-num">[19]</span>
@@ -1779,10 +1759,10 @@
     const submitBtn = form.querySelector('.submit-btn');
 
     const validators = {
-      'inp-name':    { fieldId: 'field-name',    errId: 'err-name',    test: v => v.trim().length >= 2 },
-      'inp-email':   { fieldId: 'field-email',   errId: 'err-email',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-      'inp-usecase': { fieldId: 'field-usecase', errId: 'err-usecase', test: v => v !== '' },
-      'inp-message': { fieldId: 'field-message', errId: 'err-message', test: v => v.trim().length >= 10 },
+      'inp-name':    { fieldId: 'field-name',    test: v => v.trim().length >= 2 },
+      'inp-email':   { fieldId: 'field-email',   test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      'inp-usecase': { fieldId: 'field-usecase', test: v => v !== '' },
+      'inp-message': { fieldId: 'field-message', test: v => v.trim().length >= 10 },
     };
 
     function validateField(id) {
